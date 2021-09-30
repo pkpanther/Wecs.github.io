@@ -1,0 +1,33 @@
+[System]
+Name='wind'
+Type='mamdani'
+Version=2.0
+NumInputs=1
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='wind_speed'
+Range=[0 25]
+NumMFs=3
+MF1='low':'trimf',[0 5 10]
+MF2='average':'trimf',[7.42868157286045 12.4286815728604 17.4286815728604]
+MF3='high':'trimf',[15 20 25]
+
+[Output1]
+Name='power'
+Range=[0 6]
+NumMFs=3
+MF1='less':'trimf',[0 0 2]
+MF2='normal':'trimf',[0 2 4]
+MF3='high':'trimf',[2 4 6]
+
+[Rules]
+1, 2 (1) : 1
+2, 3 (1) : 1
+3, 2 (1) : 1
